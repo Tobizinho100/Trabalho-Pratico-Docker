@@ -8,6 +8,7 @@ from rest_framework import status
 from .models import User
 from .serializers import UserSerializer
 
+
 import json
 
 
@@ -21,7 +22,6 @@ def get_users(request):
         return Response(serializer.data)
     
     return Response(status=status.HTTP_400_BAD_REQUEST)
-
 
 @api_view(['GET', 'PUT'])
 def get_by_nick(request, nick):
@@ -57,17 +57,17 @@ def user_manager(request):
     if request.method == 'GET':
 
         try:
-            if request.GET['user']:                         
+            if request.GET['user']:
 
-                user_nickname = request.GET['user']   
+                user_nickname = request.GET['user']
 
                 try:
-                    user = User.objects.get(pk=user_nickname)   
+                    user = User.objects.get(pk=user_nickname)
                 except:
-                    return Response(status=status.HTTP_404_NOT_FOUND) #nao encontra user
+                    return Response(status=status.HTTP_404_NOT_FOUND)
 
-                serializer = UserSerializer(user)           
-                return Response(serializer.data)            
+                serializer = UserSerializer(user)
+                return Response(serializer.data)
 
             else:
                 return Response(status=status.HTTP_400_BAD_REQUEST)

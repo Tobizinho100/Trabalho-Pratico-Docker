@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'api_rest',  
+    'api_rest',
 ]
 
 MIDDLEWARE = [
@@ -79,10 +79,17 @@ WSGI_APPLICATION = 'api_root.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'nome_da_base_de_dados',
+        'USER': 'utilizador',
+        'PASSWORD': 'senha',
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
+
+
+
 
 
 # Password validation
@@ -129,3 +136,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:8080', 
 ]
+
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0']
